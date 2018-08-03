@@ -1,5 +1,6 @@
 ﻿using System;
 using DesignPatterns.Builder;
+using DesignPatterns.Factory;
 
 namespace DesignPatterns
 {
@@ -7,7 +8,8 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            DemoBuilder();
+            //DemoBuilder();
+            DemoFactory();
         }
 
         static void DemoBuilder()
@@ -15,6 +17,17 @@ namespace DesignPatterns
             var cb = new CodeBuilder("Person").AddField("Name", "string").AddField("Age","int");
 
             Console.WriteLine(cb);
+        }
+
+        static void DemoFactory()
+        {
+            var pf = new PersonFactory();
+
+            var person1 = pf.CreatePerson("Alex");
+            var person2 = pf.CreatePerson("Crayson");
+
+            Console.WriteLine(person1);
+            Console.WriteLine(person2);
         }
     }
 }
