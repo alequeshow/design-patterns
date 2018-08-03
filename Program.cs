@@ -1,12 +1,20 @@
 ﻿using System;
+using DesignPatterns.Builder;
 
 namespace DesignPatterns
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            DemoBuilder();
+        }
+
+        static void DemoBuilder()
+        {
+            var cb = new CodeBuilder("Person").AddField("Name", "string").AddField("Age","int");
+
+            Console.WriteLine(cb);
         }
     }
 }
