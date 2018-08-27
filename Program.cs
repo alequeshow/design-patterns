@@ -2,6 +2,7 @@
 using DesignPatterns.Builder;
 using DesignPatterns.Factory;
 using DesignPatterns.Prototype;
+using DesignPatterns.Singleton;
 
 namespace DesignPatterns
 {
@@ -11,7 +12,8 @@ namespace DesignPatterns
         {
             //DemoBuilder();
             //DemoFactory();
-            DemoPrototype();
+            //DemoPrototype();
+            DemoSingleton();
         }
 
         static void DemoBuilder()
@@ -46,8 +48,18 @@ namespace DesignPatterns
             ln2.End.X = 22;
             ln2.End.Y = 60;
 
-            Console.WriteLine($"Line 1 Start at ({ln1.Start.X},{ln1.Start.Y}) and ends at ({ln1.End.X},{ln1.End.Y})");
-            Console.WriteLine($"Line 2 Start at ({ln2.Start.X},{ln2.Start.Y}) and ends at ({ln2.End.X},{ln2.End.Y})");
+            Console.WriteLine(ln1);
+            Console.WriteLine(ln2);
+        }
+
+        static void DemoSingleton()
+        {
+            //Test1 - Singleton
+            var obj1 = Singleton.Singleton.Instance;            
+
+            var isSingleton =  SingletonTester.IsSingleton(() => obj1);
+
+            Console.WriteLine($"Test 1 is singleton: { isSingleton }");
         }
     }
 }

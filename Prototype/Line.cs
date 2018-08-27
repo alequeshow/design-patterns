@@ -28,5 +28,10 @@ namespace DesignPatterns.Prototype
             }
         };
       }
+
+      public override string ToString()
+      {
+        return $"The Line Starts at point({Start.X},{Start.Y}) and Ends at point({End.X},{End.Y})";
+      }
     } 
 }
