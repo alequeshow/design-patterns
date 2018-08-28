@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatterns.Adapter;
 using DesignPatterns.Builder;
 using DesignPatterns.Factory;
 using DesignPatterns.Prototype;
@@ -13,7 +14,8 @@ namespace DesignPatterns
             //DemoBuilder();
             //DemoFactory();
             //DemoPrototype();
-            DemoSingleton();
+            DemoSingleton(); //Not Tested
+            //DemoAdapter(); //Not Tested
         }
 
         static void DemoBuilder()
@@ -55,11 +57,29 @@ namespace DesignPatterns
         static void DemoSingleton()
         {
             //Test1 - Singleton
-            var obj1 = Singleton.Singleton.Instance;            
+            var obj1 = Singleton.Singleton.Instance;
 
             var isSingleton =  SingletonTester.IsSingleton(() => obj1);
 
             Console.WriteLine($"Test 1 is singleton: { isSingleton }");
+
+            //Test2 - Not Singleton
+            var obj2 = new object();
+
+            isSingleton =  SingletonTester.IsSingleton(() => obj2);
+
+            Console.WriteLine($"Test 2 is singleton: { isSingleton }");
+        }
+        
+        static void DemoAdapter()
+        {
+            var square = new Square(){ Side = 12 };
+            var adpetedSquare = new SquareToRectangleAdapter(square);
+
+            var area1 = Math.Pow(square.Side, 2);
+            var area2 = adpetedSquare.Area();
+
+            Console.WriteLine($"Square area is { area1 } and Rectangle area is { area2 }");
         }
     }
 }
