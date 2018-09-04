@@ -6,10 +6,7 @@ namespace DesignPatterns.Singleton
     {
         private Singleton()
         {
-            instance = new Singleton()
-            {
-                Value = DateTime.Now.Millisecond.ToString()
-            };
+            this.Value = DateTime.Now.Millisecond.ToString();            
         }
 
         public string Value {get; set;}
