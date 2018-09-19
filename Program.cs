@@ -4,6 +4,7 @@ using DesignPatterns.Builder;
 using DesignPatterns.Factory;
 using DesignPatterns.Prototype;
 using DesignPatterns.Singleton;
+using DesignPatterns.Bridge;
 
 namespace DesignPatterns
 {
@@ -14,8 +15,9 @@ namespace DesignPatterns
             //DemoBuilder();
             //DemoFactory();
             //DemoPrototype();
-            DemoSingleton(); //Not Tested
-            //DemoAdapter(); //Not Tested
+            //DemoSingleton();
+            //DemoAdapter();
+            DemoBridge();
         }
 
         static void DemoBuilder()
@@ -73,13 +75,21 @@ namespace DesignPatterns
         
         static void DemoAdapter()
         {
-            var square = new Square(){ Side = 12 };
+            var square = new Adapter.Square(){ Side = 12 };
             var adpetedSquare = new SquareToRectangleAdapter(square);
 
             var area1 = Math.Pow(square.Side, 2);
             var area2 = adpetedSquare.Area();
 
             Console.WriteLine($"Square area is { area1 } and Rectangle area is { area2 }");
+        }
+
+        static void DemoBridge()
+        {
+            Console.WriteLine(new Triangle(new RasterRenderer()).ToString());
+            Console.WriteLine(new Triangle(new VectorRenderer()).ToString());
+            Console.WriteLine(new Bridge.Square(new RasterRenderer()).ToString());
+            Console.WriteLine(new Bridge.Square(new VectorRenderer()).ToString());
         }
     }
 }
