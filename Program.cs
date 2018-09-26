@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using DesignPatterns.Adapter;
 using DesignPatterns.Builder;
 using DesignPatterns.Factory;
 using DesignPatterns.Prototype;
 using DesignPatterns.Singleton;
 using DesignPatterns.Bridge;
+using DesignPatterns.Composite;
 
 namespace DesignPatterns
 {
@@ -17,7 +19,8 @@ namespace DesignPatterns
             //DemoPrototype();
             //DemoSingleton();
             //DemoAdapter();
-            DemoBridge();
+            //DemoBridge();
+            DemoComposite();
         }
 
         static void DemoBuilder()
@@ -90,6 +93,21 @@ namespace DesignPatterns
             Console.WriteLine(new Triangle(new VectorRenderer()).ToString());
             Console.WriteLine(new Bridge.Square(new RasterRenderer()).ToString());
             Console.WriteLine(new Bridge.Square(new VectorRenderer()).ToString());
+        }
+
+        static void DemoComposite()
+        {
+            ManyValues items = new ManyValues();
+            items.Add(10);
+            items.Add(30);
+            items.Add(18);
+
+            IValueContainer item = new SingleValue(){ Value = 6 };
+
+            List<IValueContainer> containters = new List<IValueContainer>();
+
+            //containters.Add(items);
+            //containters.Add(item);
         }
     }
 }
